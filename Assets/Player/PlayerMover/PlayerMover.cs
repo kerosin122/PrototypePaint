@@ -1,13 +1,16 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerCharacteristics))]
 public class PlayerMover : MonoBehaviour
 {
     private PlayerCharacteristics _player;
     private InputKeyBoard _input = new();
+    private Rigidbody2D _rigidbody;
 
 
     private void Awake()
     {
+        _rigidbody = GetComponent<Rigidbody2D>();
         _input.CreateInputSystem();
         _player = GetComponent<PlayerCharacteristics>();
     }
@@ -19,7 +22,9 @@ public class PlayerMover : MonoBehaviour
 
     private void Move()
     {
-        transform.position += _player.GetSpeed() * Time.deltaTime * (Vector3)_input.GetVector();// пока пускай так
+
+        _rigidbody.AddForce(_player.GetSpeed() * Time.deltaTime * (Vector3)_input.GetVector());
+        // transform.position += _player.GetSpeed() * Time.deltaTime * (Vector3)_input.GetVector();// пока пускай так
     }
 
 
