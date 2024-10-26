@@ -22,9 +22,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Move()
     {
-
         _rigidbody.AddForce(_player.GetSpeed() * Time.deltaTime * (Vector3)_input.GetVector());
-        // transform.position += _player.GetSpeed() * Time.deltaTime * (Vector3)_input.GetVector();// пока пускай так
     }
 
 
