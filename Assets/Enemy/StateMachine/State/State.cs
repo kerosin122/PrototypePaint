@@ -9,8 +9,8 @@ public abstract class State : MonoBehaviour
     protected Animator Animator { get; private set; }
     protected NavMeshAgent Agent { get; private set; }
     protected PlayerMover Target { get; private set; }
+    [SerializeField] private Transition[] _transitionsBack;
     [SerializeField] private Transition[] _transitionsNext;
-    // [SerializeField] private Transition[] _transitionsBack;
 
     private void Awake()
     {
@@ -24,8 +24,8 @@ public abstract class State : MonoBehaviour
         {
             Target = target;
             enabled = true;
-            EnumerationTransition(_transitionsNext, true);
-            // EnumerationTransition(_transitionsBack, true);
+            EnumerationTransition(_transitionsNext, false, true);
+            EnumerationTransition(_transitionsBack, false, true);
         }
     }
 
@@ -33,8 +33,8 @@ public abstract class State : MonoBehaviour
     {
         if (enabled)
         {
-            EnumerationTransition(_transitionsNext, false);
-            // EnumerationTransition(_transitionsBack, false);
+            EnumerationTransition(_transitionsNext, true, false);
+            EnumerationTransition(_transitionsBack, true, false);
             enabled = false;
         }
     }
@@ -51,23 +51,23 @@ public abstract class State : MonoBehaviour
         return null;
     }
 
-    // public State GetBackState()
-    // {
-    //     foreach (var transition in _transitionsBack)
-    //     {
-    //         if (transition.NeedBackTransit)
-    //         {
-    //             return transition.TargetNextState;
-    //         }
-    //     }
-    //     return null;
-    // }
+    public State GetBackState()
+    {
+        foreach (var transition in _transitionsBack)
+        {
+            if (transition.NeedBackTransit)
+            {
+                return transition.TargetBackState;
+            }
+        }
+        return null;
+    }
 
-    private void EnumerationTransition(Transition[] transitions, bool value)
+    private void EnumerationTransition(Transition[] transitions, bool enable, bool value)
     {
         foreach (var transition in transitions)
         {
-            if (!transition.enabled)
+            if (transition.enabled == enable)
             {
                 transition.enabled = value;
                 transition.Initialize(Target, Agent);
