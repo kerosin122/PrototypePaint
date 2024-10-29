@@ -8,6 +8,6 @@ public class Walking : State
     }
     private void OnEnable()
     {
-        Debug.Log("Идем!");
+        // Debug.Log("Идем!");
     }
 }

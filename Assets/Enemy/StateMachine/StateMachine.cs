@@ -24,11 +24,11 @@ public class StateMachine : MonoBehaviour
             Transit(nextState);
         }
 
-        // State backState = _currentState.GetBackState();
-        // if (backState != null)
-        // {
-        //     Transit(backState);
-        // }
+        State backState = _currentState.GetBackState();
+        if (backState != null)
+        {
+            Transit(backState);
+        }
     }
 
     private void Restart(State startState)
@@ -40,10 +40,10 @@ public class StateMachine : MonoBehaviour
         }
     }
 
-    private void Transit(State StateNext)
+    private void Transit(State state)
     {
         _currentState.Exit();
-        _currentState = StateNext;
+        _currentState = state;
         _currentState.Enter(_target);
     }
 
