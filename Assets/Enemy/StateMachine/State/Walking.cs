@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Walking : State
 {
-    private void Update()
-    {
-        Agent.SetDestination(Target.transform.position);
-    }
+    [SerializeField] private GameObject[] _checkPoint;
+    private GeneratePath _path;
+
     private void OnEnable()
     {
-        // Debug.Log("Идем!");
+        _path ??= new(_checkPoint, Agent);
+        _path.SetPathEnemy();
     }
 }
