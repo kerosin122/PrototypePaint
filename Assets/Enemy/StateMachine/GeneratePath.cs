@@ -5,13 +5,15 @@ public class GeneratePath
 {
     private NavMeshAgent _agent;
     private GameObject[] _positions;
-    private System.Random _random;
+    private Vector3 _currentPos;
+    // private System.Random _random;
+
 
     public GeneratePath(GameObject[] positions, NavMeshAgent agent)
     {
         _positions = positions;
         _agent = agent;
-        _random = new System.Random(1565);
+        // _random = new System.Random(1565);
     }
 
     public void SetPathEnemy()
@@ -21,7 +23,13 @@ public class GeneratePath
 
     private Vector3 ChangePosition()
     {
-        return _positions[_random.Next(0, _positions.Length - 1)].transform.position;
+        Vector3 newPos = _positions[Random.Range(0, _positions.Length)].transform.position;
+        while (newPos == _currentPos)
+        {
+            newPos = _positions[Random.Range(0, _positions.Length)].transform.position;
+        }
+        _currentPos = newPos;
+        return newPos;
     }
 
     private void SetPositionToMove(Vector3 targetPos)

@@ -10,4 +10,6 @@ public class Walking : State
         _path ??= new(_checkPoint, Agent);
         _path.SetPathEnemy();
     }
+
+
 }

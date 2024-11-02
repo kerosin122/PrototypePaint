@@ -7,7 +7,6 @@ public class Run : State
     private void Update()
     {
         Agent.SetDestination(Target.transform.position);
-        Debug.Log(Agent.speed);
     }
     private void OnEnable()
     {

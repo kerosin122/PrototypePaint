@@ -2,45 +2,32 @@ using UnityEngine;
 
 public class RunTransition : Transition
 {
-    [SerializeField] private float _distanceToTarget;
+    [SerializeField] private float _timerSearch;
+    [SerializeField] private float _rayDistance = 5;
+    [SerializeField] private GameObject _startPointRayCast;
 
-    private float CheckDistance()
+    private void SearchPlayer(bool value)
     {
-        return Vector3.Distance(transform.position, Target.transform.position);
-    }
-
-    private void Update()
-    {
-        if (_distanceToTarget <= CheckDistance())
+        if (!value)
         {
-            Run();
+            if (RayCastForEnemy.Ray(_startPointRayCast.transform.position, Target.transform.position, _rayDistance))
+            {
+                NeedNextTransit = true;
+            }
             return;
         }
-        Walking();
     }
 
-    private void Run()
+    private void OnEnable()
     {
-        if (!NeedNextTransit)
-        {
-            NeedNextTransit = true;
-            NeedBackTransit = false;
-        }
+        StartCoroutine(Timer.TimerCounting(_timerSearch));
+        Timer.TimeIsUp += SearchPlayer;
     }
-
-    private void Walking()
-    {
-        if (!NeedBackTransit)
-        {
-            NeedBackTransit = true;
-            NeedNextTransit = false;
-        }
-    }
-
 
     private void OnDisable()
     {
-        NeedBackTransit = false;
         NeedNextTransit = false;
+        StopAllCoroutines();
+        Timer.TimeIsUp -= SearchPlayer;
     }
 }
