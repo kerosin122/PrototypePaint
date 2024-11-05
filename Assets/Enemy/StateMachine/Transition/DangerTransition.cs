@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DangerTransition : Transition
 {
+    [SerializeField] private float _duration;
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (!NeedNextTransit && collider.GetComponent<PlayerMover>())
@@ -24,7 +25,7 @@ public class DangerTransition : Transition
     {
         if (NeedNextTransit)
         {
-            StartCoroutine(Timer.TimerCounting(3f));
+            StartCoroutine(Timer.TimerCounting(_duration));
         }
         Timer.TimeIsUp += Walking;
     }

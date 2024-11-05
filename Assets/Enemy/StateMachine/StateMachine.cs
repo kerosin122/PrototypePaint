@@ -34,10 +34,7 @@ public class StateMachine : MonoBehaviour
     private void Restart(State startState)
     {
         _currentState = startState;
-        if (_currentState != null)
-        {
-            _currentState.Enter(_target);
-        }
+        _currentState?.Enter(_target);
     }
 
     private void Transit(State state)
