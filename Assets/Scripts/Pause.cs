@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-   private Text buttonText;
+    private Text buttonText;
     public Button pauseButton;
     private bool isPaused = false;
 
