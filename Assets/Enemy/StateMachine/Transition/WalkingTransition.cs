@@ -3,6 +3,8 @@ using UnityEngine;
 public class WalkingTransition : Transition
 {
 
+    [SerializeField] private float _duration;
+
     private void Update()
     {
         StopWalking();
@@ -28,7 +30,7 @@ public class WalkingTransition : Transition
         {
             NeedBackTransit = false;
             Timer.TimeIsUp += NeedTransition;
-            StartCoroutine(Timer.TimerCounting(2f));
+            StartCoroutine(Timer.TimerCounting(_duration));
         }
     }
 

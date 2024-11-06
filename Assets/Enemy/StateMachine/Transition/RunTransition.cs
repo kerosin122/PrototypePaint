@@ -7,7 +7,6 @@ public class RunTransition : Transition
 
     private void SearchPlayer(bool value)
     {
-        Debug.Log("Search");
         if (RayCastForEnemy.Ray(transform.position, Target.transform.position, _rayDistance))
         {
             NeedNextTransit = true;
