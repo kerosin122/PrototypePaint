@@ -24,8 +24,8 @@ public abstract class State : MonoBehaviour
         {
             Target = target;
             enabled = true;
-            EnumerationTransition(_transitionsNext, false, true);
-            EnumerationTransition(_transitionsBack, false, true);
+            EnumerationTransition(_transitionsNext, true);
+            EnumerationTransition(_transitionsBack, true);
         }
     }
 
@@ -33,8 +33,8 @@ public abstract class State : MonoBehaviour
     {
         if (enabled)
         {
-            EnumerationTransition(_transitionsNext, true, false);
-            EnumerationTransition(_transitionsBack, true, false);
+            EnumerationTransition(_transitionsNext, false);
+            EnumerationTransition(_transitionsBack, false);
             enabled = false;
         }
     }
@@ -63,14 +63,14 @@ public abstract class State : MonoBehaviour
         return null;
     }
 
-    private void EnumerationTransition(Transition[] transitions, bool enable, bool value)
+    private void EnumerationTransition(Transition[] transitions, bool enable)
     {
         foreach (var transition in transitions)
         {
-            if (transition.enabled == enable)
+            if (transition.enabled != enable)
             {
-                transition.enabled = value;
                 transition.Initialize(Target, Agent);
+                transition.enabled = enable;
             }
         }
     }

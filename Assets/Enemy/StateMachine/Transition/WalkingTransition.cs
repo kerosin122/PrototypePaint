@@ -27,8 +27,8 @@ public class WalkingTransition : Transition
         if (!NeedNextTransit)
         {
             NeedBackTransit = false;
-            TimeCounting.TimeIsUp += NeedTransition;
-            StartCoroutine(TimeCounting.TimerCounting(2f));
+            Timer.TimeIsUp += NeedTransition;
+            StartCoroutine(Timer.TimerCounting(2f));
         }
     }
 
@@ -36,7 +36,7 @@ public class WalkingTransition : Transition
     {
         if (NeedNextTransit)
         {
-            TimeCounting.TimeIsUp -= NeedTransition;
+            Timer.TimeIsUp -= NeedTransition;
         }
     }
 

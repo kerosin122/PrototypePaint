@@ -11,6 +11,7 @@ public abstract class Transition : MonoBehaviour
     public bool NeedBackTransit { get; protected set; }
     protected PlayerMover Target { get; private set; }
     protected NavMeshAgent Agent;
+    protected TimeCounting Timer = new();
     public void Initialize(PlayerMover target, NavMeshAgent agent)
     {
         Target = target;

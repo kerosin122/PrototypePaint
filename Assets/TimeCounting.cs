@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using UnityEngine;
-public static class TimeCounting
+public class TimeCounting
 {
-    public static Action<bool> TimeIsUp;
-    public static IEnumerator TimerCounting(float delay)
+    public Action<bool> TimeIsUp;
+    public IEnumerator TimerCounting(float delay)
     {
         float timer = 0;
         while (true)
