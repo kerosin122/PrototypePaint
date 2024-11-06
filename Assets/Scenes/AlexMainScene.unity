@@ -36168,7 +36168,7 @@ GameObject:
   - component: {fileID: 1373479800}
   - component: {fileID: 1373479799}
   - component: {fileID: 1373479801}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36328,6 +36328,7 @@ MonoBehaviour:
   _transitionsNext:
   - {fileID: 1373479790}
   - {fileID: 1373479798}
+  - {fileID: 1373479800}
 --- !u!95 &1373479792
 Animator:
   serializedVersion: 5
@@ -36379,8 +36380,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetBackState: {fileID: 1373479797}
   _targetNextState: {fileID: 1373479794}
-  _timerSearch: 5
-  _rayDistance: 5
+  _timerSearch: 3
+  _rayDistance: 4
 --- !u!58 &1373479796
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -56859,7 +56860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 30891702772107528, guid: 48421053e4e90c74095c2fe93be9d704, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.08332876
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 30891702772107528, guid: 48421053e4e90c74095c2fe93be9d704, type: 3}
       propertyPath: m_LocalRotation.w

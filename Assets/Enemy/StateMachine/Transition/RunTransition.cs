@@ -7,18 +7,14 @@ public class RunTransition : Transition
 
     private void SearchPlayer(bool value)
     {
-        if (!value)
+        Debug.Log("Search");
+        if (RayCastForEnemy.Ray(transform.position, Target.transform.position, _rayDistance))
         {
-            if (RayCastForEnemy.Ray(transform.position, Target.transform.position, _rayDistance))
-            {
-                StopAllCoroutines();
-                NeedNextTransit = true;
-                NeedBackTransit = false;
-                return;
-            }
-            return;
+            NeedNextTransit = true;
+            NeedBackTransit = false;
         }
-        else
+
+        if (value)
         {
             NeedNextTransit = false;
             NeedBackTransit = true;

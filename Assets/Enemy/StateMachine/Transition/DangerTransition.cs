@@ -33,6 +33,7 @@ public class DangerTransition : Transition
     private void OnDisable()
     {
         StopAllCoroutines();
+        NeedBackTransit = false;
         Timer.TimeIsUp -= Walking;
     }
 }

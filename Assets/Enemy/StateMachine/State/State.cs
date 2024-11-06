@@ -67,9 +67,9 @@ public abstract class State : MonoBehaviour
     {
         foreach (var transition in transitions)
         {
-            transition.Initialize(Target, Agent);
             if (transition.enabled != enable)
             {
+                transition.Initialize(Target, Agent);
                 transition.enabled = enable;
             }
         }
