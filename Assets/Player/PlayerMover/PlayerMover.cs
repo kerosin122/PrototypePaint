@@ -35,5 +35,9 @@ public class PlayerMover : MonoBehaviour
     {
         _input.OnDisable();
     }
+     public Vector2 GetMoveInput()
+    {
+        return _input.GetVector();
+    }
 
 }
