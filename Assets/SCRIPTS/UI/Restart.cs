@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Restart : MonoBehaviour
 {
-   
+
     public Button restartButton;
 
     void Start()
     {
-        
+
         if (restartButton != null)
         {
             restartButton.onClick.AddListener(RestartScene);
@@ -22,9 +22,10 @@ public class Restart : MonoBehaviour
 
     void RestartScene()
     {
-        
+
         Scene currentScene = SceneManager.GetActiveScene();
-        
+
         SceneManager.LoadScene(currentScene.name);
     }
+
 }

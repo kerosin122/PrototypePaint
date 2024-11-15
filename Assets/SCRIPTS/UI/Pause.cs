@@ -57,4 +57,6 @@ public class Pause : MonoBehaviour
             buttonText.text = "Пауза";
         }
     }
+
+
 }
