@@ -26,10 +26,13 @@ public class Console : MonoBehaviour
 
     System.Text.StringBuilder strb = new System.Text.StringBuilder();
 
+    [System.Obsolete]
     void OnEnable()
     {
         Application.RegisterLogCallback(HandleLog);
     }
+
+    [System.Obsolete]
     void OnDisable()
     {
         Application.RegisterLogCallback(null);

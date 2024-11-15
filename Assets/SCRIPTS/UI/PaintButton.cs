@@ -3,22 +3,21 @@ using UnityEngine;
 public class PaintButton : MonoBehaviour
 {
     [SerializeField] private PlayerTrigger _player;
-    [SerializeField] private Canvas _paintScene;
 
     private void Awake()
     {
-        _player.Trigger += ChangeVisible;
-        ChangeVisible(false);
+        _player.Trigger += VisibilitySwitch;
+        VisibilitySwitch(false);
     }
 
-    private void ChangeVisible(bool value)
+    private void VisibilitySwitch(bool value)
     {
         gameObject.SetActive(value);
     }
 
     private void OnDestroy()
     {
-        _player.Trigger -= ChangeVisible;
+        _player.Trigger -= VisibilitySwitch;
     }
 }
 
