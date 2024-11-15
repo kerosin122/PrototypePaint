@@ -7,6 +7,8 @@ public class SprayPaint : MonoBehaviour
     [SerializeField] private Texture2D _brushTexture;
     [SerializeField] private Texture2D _textureOld;
     [SerializeField] private Color _color;
+
+    [SerializeField] private DrawZone _drawZona;
     // [SerializeField] private SystemGrafity _systemGrafity;
     // private Color _brushColor = Color.black;
     private Material _material;
@@ -19,24 +21,24 @@ public class SprayPaint : MonoBehaviour
         _material.SetTexture("_BrushTexture", _brushTexture);
     }
 
-    public void Draw(RaycastHit hit)
+    public void Draw(Vector2 POS)
     {
-        if (Input.GetMouseButton(0))
-        {
-            if (hit.collider.TryGetComponent<DrawZone>(out var drawZone))
-            {
-                Vector2 textCoord = hit.textureCoord;
-                // SetSettingBrush(hit.point);
-                // float interpolant = Mathf.InverseLerp(MaxDistance, 0, GetPositionRayCast(hit.point));
-                // drawZone.DrawTexture = DrawOnTextureGPU(drawZone.DrawTexture, textCoord, _brushColor, interpolant);
-                drawZone.DrawTexture = DrawOnTextureGPU(drawZone.DrawTexture, textCoord, _color);
-            }
-        }
+        Debug.Log("afssaf");
+        // if (Input.GetMouseButton(0))
+        // {
+        // if (hit.collider.TryGetComponent<DrawZone>(out var drawZone))
+        // {
+        Vector2 textCoord = POS;
+        // SetSettingBrush(hit.point);
+        // float interpolant = Mathf.InverseLerp(MaxDistance, 0, GetPositionRayCast(hit.point));
+        // drawZone.DrawTexture = DrawOnTextureGPU(drawZone.DrawTexture, textCoord, _brushColor, interpolant);
+        _drawZona.DrawTexture = DrawOnTextureGPU(_drawZona.DrawTexture, textCoord, _color);
+        // }
+        // }
     }
 
     RenderTexture DrawOnTextureGPU(Texture src, Vector2 texCoord, Color newColor)
     {
-
         _material.SetVector("_BrushPosition", texCoord);
         _material.SetFloat("_BrushSize", _brushSize / src.width);
         _material.SetColor("_BrushColor", newColor);
