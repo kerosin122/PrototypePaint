@@ -6,7 +6,7 @@ using UnityEngine;
 public class SystemGrafity : MonoBehaviour
 {
     private List<Vector2> _positionPixelsGrafity = new();
-    public Action GraffitiIsDrawn;
+    public Action FinishedGraffiti;
 
     public void GetGrafityPixels(Texture2D text)
     {
@@ -38,6 +38,7 @@ public class SystemGrafity : MonoBehaviour
         float percentPaint = Mathf.InverseLerp(0, _positionPixelsGrafity.Count, _cunterPixelNumber);
         if (percentPaint >= 0.95)
         {
+            FinishedGraffiti?.Invoke();
             return true;
         }
         return false;

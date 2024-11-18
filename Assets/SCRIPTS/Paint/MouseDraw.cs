@@ -8,7 +8,7 @@ public class MouseDraw : MonoBehaviour
     [SerializeField] private Canvas _hostCanvas;
     [SerializeField] private SystemGrafity _systemGrafity;
     [SerializeField] private ConverterTexture _converter;
-    [SerializeField] private Pointer _pointer;
+    [SerializeField] private Pen _pointer;
     public Color32 penColour = new(0, 0, 0, 255);
     public Color32 backroundColour = new(0, 0, 0, 0);
     public bool IsEraser = false;
@@ -18,6 +18,7 @@ public class MouseDraw : MonoBehaviour
 
     private void Start()
     {
+        var text = Resources.Load<Texture2D>("Texture/King");
         Init();
     }
     private void OnEnable()
