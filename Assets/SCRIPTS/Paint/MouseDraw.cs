@@ -16,14 +16,16 @@ public class MouseDraw : MonoBehaviour
     private RawImage m_image;
     private Vector2? m_lastPos;
 
-    private void Start()
-    {
-        var text = Resources.Load<Texture2D>("Texture/King");
-        Init();
-    }
+    // private void Start()
+    // {
+    //     Init();
+    // }
     private void OnEnable()
     {
+        var text = Resources.Load<Texture2D>("Texture/King");
         m_image = transform.GetComponent<RawImage>();
+        m_image.texture = text;
+        Init();
     }
     private void Update()
     {
@@ -33,6 +35,7 @@ public class MouseDraw : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
                 WritePixels(pos);
+                
         }
 
         if (Input.GetMouseButtonUp(0))
