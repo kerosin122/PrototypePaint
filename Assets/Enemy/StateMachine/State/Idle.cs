@@ -8,10 +8,12 @@ public class Idle : State
     {
         // Debug.Log("Cтоим");
         Agent.isStopped = true;
+        Animator.SetBool("Idle",true);
     }
 
     private void OnDisable()
     {
         Agent.isStopped = false;
+        Animator.SetBool("Idle",false);
     }
 }
