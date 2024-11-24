@@ -3,20 +3,20 @@ using UnityEngine;
 
 public class PlayerTrigger : MonoBehaviour
 {
-    public Action<bool> Trigger;
+    
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.TryGetComponent<MagicalRock>(out MagicalRock magicalRock))
+        if (collider.TryGetComponent<IInteractive>(out IInteractive interactive))
         {
-            Trigger?.Invoke(true);
+            interactive.Activate();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.TryGetComponent<MagicalRock>(out MagicalRock magicalRock))
+        if (collider.TryGetComponent<IInteractive>(out IInteractive interactive))
         {
-            Trigger?.Invoke(false);
+            interactive.Deactivate();
         }
     }
 }

@@ -5,6 +5,6 @@ public class Attack : State
 {
     private void OnEnable()
     {
-        Debug.Log("Attack");
+
     }
 }

@@ -6,7 +6,6 @@ public class Idle : State
 {
     private void OnEnable()
     {
-        // Debug.Log("Cтоим");
         Agent.isStopped = true;
     }
 

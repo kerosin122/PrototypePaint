@@ -35,7 +35,7 @@ public class MouseDraw : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
                 WritePixels(pos);
-                
+
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -43,7 +43,7 @@ public class MouseDraw : MonoBehaviour
             m_lastPos = null;
             if (_systemGrafity.CheckQuantityPixelsPainted(m_image.texture as Texture2D))
             {
-                Debug.Log("Uspeh");
+                EventBus.Instance.FinishedGraffiti?.Invoke();
             }
         }
     }

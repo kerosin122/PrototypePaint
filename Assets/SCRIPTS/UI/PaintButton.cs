@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class PaintButton : MonoBehaviour
 {
-    [SerializeField] private PlayerTrigger _player;
-
     private void Awake()
     {
-        _player.Trigger += VisibilitySwitch;
+        EventBus.Instance.PaintActivate += VisibilitySwitch;
         VisibilitySwitch(false);
     }
 
@@ -17,7 +15,7 @@ public class PaintButton : MonoBehaviour
 
     private void OnDestroy()
     {
-        _player.Trigger -= VisibilitySwitch;
+        EventBus.Instance.PaintActivate -= VisibilitySwitch;
     }
 }
 
