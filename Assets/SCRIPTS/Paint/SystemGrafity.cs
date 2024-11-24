@@ -6,7 +6,6 @@ using UnityEngine;
 public class SystemGrafity : MonoBehaviour
 {
     private List<Vector2> _positionPixelsGrafity = new();
-    public Action GraffitiIsDrawn;
 
     public void GetGrafityPixels(Texture2D text)
     {
