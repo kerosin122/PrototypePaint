@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -27,7 +26,6 @@ public class MagicRockParent : MonoBehaviour, IMagicRockService
     {
         _currentRock = rock;
     }
-
     private void OnEnable()
     {
         EventBus.Instance.FinishedGraffiti += RockIsPainted;
@@ -41,7 +39,6 @@ public class MagicRockParent : MonoBehaviour, IMagicRockService
     {
         return _rockAll.Length;
     }
-
     public int GetCountRockPainted()
     {
         return _rockIsPainted.Count;

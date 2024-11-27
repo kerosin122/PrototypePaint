@@ -16,10 +16,6 @@ public class MouseDraw : MonoBehaviour
     private RawImage m_image;
     private Vector2? m_lastPos;
 
-    // private void Start()
-    // {
-    //     Init();
-    // }
     private void OnEnable()
     {
         var text = Resources.Load<Texture2D>("Texture/King");
@@ -27,6 +23,8 @@ public class MouseDraw : MonoBehaviour
         m_image.texture = text;
         Init();
     }
+
+
     private void Update()
     {
         var pos = Input.mousePosition;
@@ -47,11 +45,12 @@ public class MouseDraw : MonoBehaviour
             }
         }
     }
+
     private void Init()
     {
         _scaleFactor = _hostCanvas.scaleFactor * 7;
         var text = _converter.ResizeTexture(Convert.ToInt32(Screen.width / _scaleFactor), Convert.ToInt32(Screen.height / _scaleFactor), TextureFormat.RGBA32, m_image.texture, false);
-        _systemGrafity.GetGrafityPixels(text);///
+        _systemGrafity.GetGrafityPixels(text);
         m_image.texture = text;
     }
 
