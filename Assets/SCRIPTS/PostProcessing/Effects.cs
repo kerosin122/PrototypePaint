@@ -5,9 +5,9 @@ public class Effects : MonoBehaviour
 {
     [SerializeField] private float _maxDistance;
     private PostProcessVolume _effectApproachingEnemy;
-    private EnemyDetecting _enemyDetecting;
+    private IEnemyDetectingServices _enemyDetecting;
 
-    public void Inject(EnemyDetecting enemyDetecting)
+    public void Inject(IEnemyDetectingServices enemyDetecting)
     {
         _enemyDetecting = enemyDetecting;
     }
