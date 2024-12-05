@@ -39,4 +39,5 @@ public class DialogManager
         }
         return dialog;
     }
+
 }

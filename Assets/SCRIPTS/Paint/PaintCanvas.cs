@@ -1,17 +1,20 @@
 using UnityEngine;
-
-public class PaintCanvas : MonoBehaviour
+namespace EventBus
 {
-  private void SwitchVisible()
+
+  public class PaintCanvas : MonoBehaviour
   {
-    gameObject.SetActive(false);
-  }
-  private void OnEnable()
-  {
-    EventBus.Instance.FinishedGraffiti += SwitchVisible;
-  }
-  private void OnDisable()
-  {
-    EventBus.Instance.FinishedGraffiti -= SwitchVisible;
+    private void SwitchVisible(FinishedGraffitiSignals signals)
+    {
+      gameObject.SetActive(false);
+    }
+    private void OnEnable()
+    {
+      EventBus.Instance.Subscribe<FinishedGraffitiSignals>(SwitchVisible, 0);
+    }
+    private void OnDisable()
+    {
+      EventBus.Instance.Unsubscribe<FinishedGraffitiSignals>(SwitchVisible);
+    }
   }
 }

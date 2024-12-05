@@ -1,21 +1,23 @@
 using UnityEngine;
-
-public class PaintButton : MonoBehaviour
+namespace EventBus
 {
-    private void Awake()
+    public class PaintButton : MonoBehaviour
     {
-        EventBus.Instance.PaintActivate += VisibilitySwitch;
-        VisibilitySwitch(false);
-    }
+        private void Awake()
+        {
+            EventBus.Instance.Subscribe<PaintActivateSignals>(VisibilitySwitch, 0);
+            VisibilitySwitch(new PaintActivateSignals(false));
+        }
 
-    private void VisibilitySwitch(bool value)
-    {
-        gameObject.SetActive(value);
-    }
+        private void VisibilitySwitch(PaintActivateSignals signals)
+        {
+            gameObject.SetActive(signals.Activate);
+        }
 
-    private void OnDestroy()
-    {
-        EventBus.Instance.PaintActivate -= VisibilitySwitch;
+        private void OnDestroy()
+        {
+            EventBus.Instance.Unsubscribe<PaintActivateSignals>(VisibilitySwitch);
+        }
     }
 }
 

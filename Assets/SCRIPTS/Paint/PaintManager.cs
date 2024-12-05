@@ -1,22 +1,22 @@
 using UnityEngine;
-
-public class PaintManager
+namespace EventBus
 {
-    private IMagicRockService _magicRockService;
-
-    public PaintManager(IMagicRockService MagicRockService)
+    public class PaintManager
     {
-        _magicRockService = MagicRockService;
-        EventBus.Instance.CheckingPaintedGrafity += CheckPaintedRocks;
-    }
+        private IMagicRockService _magicRockService;
 
-    public void CheckPaintedRocks()
-    {
-        if (_magicRockService.GetCountRockPainted() >= _magicRockService.GetCountRockAll())
+        public PaintManager(IMagicRockService MagicRockService)
         {
-            Debug.Log("Уровень пройден");
+            _magicRockService = MagicRockService;
+            EventBus.Instance.Subscribe<CheckingPaintedGrafitySignals>(CheckPaintedRocks, 0);
+        }
+
+        public void CheckPaintedRocks(CheckingPaintedGrafitySignals signals)
+        {
+            if (_magicRockService.GetCountRockPainted() >= _magicRockService.GetCountRockAll())
+            {
+                Debug.Log("Уровень пройден");
+            }
         }
     }
-
-
 }
