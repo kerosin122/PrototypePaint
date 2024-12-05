@@ -9,14 +9,7 @@ public class Walking : State
     {
         _path ??= new(_checkPoint, Agent);
         _path.SetPathEnemy();
-        Animator.SetBool("Walking",true);
     }
-    private  void OnDisable()
-    {
-          Animator.SetBool("Walking",false);
-    } 
-        
-   
 
 
 }
