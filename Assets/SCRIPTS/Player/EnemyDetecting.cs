@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDetecting : MonoBehaviour
+public class EnemyDetecting : MonoBehaviour, IEnemyDetectingServices
 {
-    private EnemySpawner _enemySpawner;
+    private IEnemySpawnerServices _enemySpawner;
     private List<Enemy> _enemyAll;
 
-    public void Inject(EnemySpawner enemySpawner)
+    public void Inject(IEnemySpawnerServices enemySpawner)
     {
         _enemySpawner = enemySpawner;
         _enemyAll = _enemySpawner.GetEnemy();

@@ -1,37 +1,43 @@
 using MagicalRocksAndStones;
 using Unity.VisualScripting;
 using UnityEngine;
-
-public class MagicalRock : MonoBehaviour, IInteractive
+namespace EventBus
 {
-    private MagicRockParent _manager;
-    private AddColorEffect _effect;
-    private bool _painted;
 
-    private void Start()
+    public class MagicalRock : MonoBehaviour, IInteractive
     {
-        _effect = GetComponentInChildren<AddColorEffect>(true);
-        _manager = GetComponentInParent<MagicRockParent>();
-    }
-    public void Activated()
-    {
-        _painted = true;
-        _effect.gameObject.SetActive(true);
-        EventBus.Instance.PaintActivate?.Invoke(false);
-    }
+        private MagicRockParent _manager;
+        private AddColorEffect _effect;
+        private bool _painted;
 
-    public void Activate()
-    {
-        if (!_painted)
+        private void Start()
         {
-            EventBus.Instance.PaintActivate?.Invoke(true);
-            _manager.SetCurrentRock(this);
+            _effect = GetComponentInChildren<AddColorEffect>(true);
+            _manager = GetComponentInParent<MagicRockParent>();
         }
-    }
+        public void Activated()
+        {
+            _painted = true;
+            _effect.gameObject.SetActive(true);
+            // EventBus.Instance.PaintActivate?.Invoke(false);
+            EventBus.Instance.Invoke(new PaintActivateSignals(false));
+        }
 
-    public void Deactivate()
-    {
-        EventBus.Instance.PaintActivate?.Invoke(false);
-        _manager.SetCurrentRock(null);
+        public void Activate()
+        {
+            if (!_painted)
+            {
+                // EventBus.Instance.PaintActivate?.Invoke(true);
+                EventBus.Instance.Invoke(new PaintActivateSignals(true));
+                _manager.SetCurrentRock(this);
+            }
+        }
+
+        public void Deactivate()
+        {
+            EventBus.Instance.Invoke(new PaintActivateSignals(false));
+            // EventBus.Instance.PaintActivate?.Invoke(false);
+            _manager.SetCurrentRock(null);
+        }
     }
 }

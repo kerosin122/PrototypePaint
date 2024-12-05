@@ -1,17 +1,23 @@
 using UnityEngine;
-
-public class Injector : MonoBehaviour
+namespace EventBus
 {
-    [SerializeField] private MagicRockParent _rockService;
-    private PaintManager _paintManager;
-    [SerializeField] private EnemyDetecting _enemyDetecting;
-    [SerializeField] private EnemySpawner _enemySpawner;
-    [SerializeField] private Effects _effects;
-
-    private void Awake()
+    public class Injector : MonoBehaviour
     {
-        _paintManager = new(_rockService);
-        _enemyDetecting.Inject(_enemySpawner);
-        _effects.Inject(_enemyDetecting);
+        [SerializeField] private MagicRockParent _rockService;
+        private PaintManager _paintManager;
+        [SerializeField] private EnemyDetecting _enemyDetecting;
+        [SerializeField] private EnemySpawner _enemySpawner;
+        [SerializeField] private Effects _effects;
+        [SerializeField] private MouseDraw _mouseDraw;
+        [SerializeField] private MagicRockParent _rocks;
+        private EventBus _eventBus;
+
+        private void Awake()
+        {
+            _eventBus = new();
+            _paintManager = new(_rockService);
+            _enemyDetecting.Inject(_enemySpawner);
+            _effects.Inject(_enemyDetecting);
+        }
     }
 }
