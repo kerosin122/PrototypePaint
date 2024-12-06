@@ -4,9 +4,13 @@ namespace EventBus
 
    public class MainCanvas : MonoBehaviour
    {
+
+      private void Awake()
+      {
+         EventBus.Instance.Subscribe<RuneIsColoredSignals>(SwitchVisible, 0);
+      }
       private void OnEnable()
       {
-         // EventBus.Instance.FinishedGraffiti -= SwitchVisible;
          EventBus.Instance.Unsubscribe<RuneIsColoredSignals>(SwitchVisible);
       }
 
@@ -18,7 +22,6 @@ namespace EventBus
       private void OnDisable()
       {
          EventBus.Instance.Subscribe<RuneIsColoredSignals>(SwitchVisible, 0);
-         // EventBus.Instance.FinishedGraffiti += SwitchVisible;
       }
 
    }

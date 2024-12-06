@@ -16,20 +16,17 @@ public class EnemyAnimController : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(agent.pathEndPosition);
         CheckTargetPos();
-
     }
     private void CheckTargetPos()
     {
         if (agent.pathEndPosition.x > transform.position.x)
         {
             spriteRenderer.flipX = true;
-
         }
         else
-        { spriteRenderer.flipX = false;
-
+        {
+            spriteRenderer.flipX = false;
         }
 
     }
