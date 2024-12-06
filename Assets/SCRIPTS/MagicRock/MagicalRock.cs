@@ -1,5 +1,4 @@
 using MagicalRocksAndStones;
-using Unity.VisualScripting;
 using UnityEngine;
 namespace EventBus
 {
@@ -15,28 +14,25 @@ namespace EventBus
             _effect = GetComponentInChildren<AddColorEffect>(true);
             _manager = GetComponentInParent<MagicRockParent>();
         }
-        public void Activated()
+        public void RockIsActivated()
         {
             _painted = true;
             _effect.gameObject.SetActive(true);
-            // EventBus.Instance.PaintActivate?.Invoke(false);
-            EventBus.Instance.Invoke(new PaintActivateSignals(false));
+            EventBus.Instance.Invoke(new DrawingModeAvailableSignals(false));
         }
 
         public void Activate()
         {
             if (!_painted)
             {
-                // EventBus.Instance.PaintActivate?.Invoke(true);
-                EventBus.Instance.Invoke(new PaintActivateSignals(true));
+                EventBus.Instance.Invoke(new DrawingModeAvailableSignals(true));
                 _manager.SetCurrentRock(this);
             }
         }
 
         public void Deactivate()
         {
-            EventBus.Instance.Invoke(new PaintActivateSignals(false));
-            // EventBus.Instance.PaintActivate?.Invoke(false);
+            EventBus.Instance.Invoke(new DrawingModeAvailableSignals(false));
             _manager.SetCurrentRock(null);
         }
     }

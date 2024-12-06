@@ -14,28 +14,16 @@ namespace EventBus
         {
             _rockAll = GetComponentsInChildren<MagicalRock>();
         }
-
-        private void RockIsPainted(FinishedGraffitiSignals signal)
+        private void RockIsPainted(RuneIsColoredSignals signal)
         {
             _rockIsPainted.Add(_currentRock);
-            _counterText.text = $"{_rockIsPainted.Count}/{_rockAll.Length}";
-            _currentRock.Activated();
-            EventBus.Instance.Invoke(new CheckingPaintedGrafitySignals());
+            _counterText.text = $"{_rockIsPainted.Count}/{_rockAll.Length}";/// унести от сюда потом, пока лень и неохото
+            _currentRock.RockIsActivated();
         }
-
         public void SetCurrentRock(MagicalRock rock)
         {
             _currentRock = rock;
         }
-        private void OnEnable()
-        {
-            EventBus.Instance.Subscribe<FinishedGraffitiSignals>(RockIsPainted, 0);
-        }
-        private void OnDisable()
-        {
-            EventBus.Instance.Unsubscribe<FinishedGraffitiSignals>(RockIsPainted);
-        }
-
         public int GetCountRockAll()
         {
             return _rockAll.Length;
@@ -43,6 +31,14 @@ namespace EventBus
         public int GetCountRockPainted()
         {
             return _rockIsPainted.Count;
+        }
+        private void OnEnable()
+        {
+            EventBus.Instance.Subscribe<RuneIsColoredSignals>(RockIsPainted, 1);
+        }
+        private void OnDisable()
+        {
+            EventBus.Instance.Unsubscribe<RuneIsColoredSignals>(RockIsPainted);
         }
     }
 }

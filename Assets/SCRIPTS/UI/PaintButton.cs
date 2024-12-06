@@ -5,18 +5,18 @@ namespace EventBus
     {
         private void Awake()
         {
-            EventBus.Instance.Subscribe<PaintActivateSignals>(VisibilitySwitch, 0);
-            VisibilitySwitch(new PaintActivateSignals(false));
+            EventBus.Instance.Subscribe<DrawingModeAvailableSignals>(VisibilitySwitch, 0);
+            VisibilitySwitch(new DrawingModeAvailableSignals(false));
         }
 
-        private void VisibilitySwitch(PaintActivateSignals signals)
+        private void VisibilitySwitch(DrawingModeAvailableSignals signals)
         {
             gameObject.SetActive(signals.Activate);
         }
 
         private void OnDestroy()
         {
-            EventBus.Instance.Unsubscribe<PaintActivateSignals>(VisibilitySwitch);
+            EventBus.Instance.Unsubscribe<DrawingModeAvailableSignals>(VisibilitySwitch);
         }
     }
 }

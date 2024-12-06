@@ -8,10 +8,10 @@ namespace EventBus
         public PaintManager(IMagicRockService MagicRockService)
         {
             _magicRockService = MagicRockService;
-            EventBus.Instance.Subscribe<CheckingPaintedGrafitySignals>(CheckPaintedRocks, 0);
+            EventBus.Instance.Subscribe<RuneIsColoredSignals>(CheckPaintedRocks, 0);
         }
 
-        public void CheckPaintedRocks(CheckingPaintedGrafitySignals signals)
+        public void CheckPaintedRocks(RuneIsColoredSignals signals)
         {
             if (_magicRockService.GetCountRockPainted() >= _magicRockService.GetCountRockAll())
             {
