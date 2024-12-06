@@ -7,17 +7,17 @@ namespace EventBus
       private void OnEnable()
       {
          // EventBus.Instance.FinishedGraffiti -= SwitchVisible;
-         EventBus.Instance.Unsubscribe<FinishedGraffitiSignals>(SwitchVisible);
+         EventBus.Instance.Unsubscribe<RuneIsColoredSignals>(SwitchVisible);
       }
 
-      private void SwitchVisible(FinishedGraffitiSignals signals)
+      private void SwitchVisible(RuneIsColoredSignals signals)
       {
          gameObject.SetActive(true);
       }
 
       private void OnDisable()
       {
-         EventBus.Instance.Subscribe<FinishedGraffitiSignals>(SwitchVisible, 0);
+         EventBus.Instance.Subscribe<RuneIsColoredSignals>(SwitchVisible, 0);
          // EventBus.Instance.FinishedGraffiti += SwitchVisible;
       }
 

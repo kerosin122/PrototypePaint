@@ -41,7 +41,7 @@ namespace EventBus
                 m_lastPos = null;
                 if (_systemGrafity.CheckQuantityPixelsPainted(m_image.texture as Texture2D))
                 {
-                    EventBus.Instance.Invoke(new FinishedGraffitiSignals());
+                    EventBus.Instance.Invoke(new RuneIsColoredSignals());
                 }
             }
         }
