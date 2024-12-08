@@ -21,7 +21,7 @@ public class AnimController : MonoBehaviour
     {
         Vector2 moveInput = playerMover.GetMoveInput();
 
-        
+
         if (moveInput != Vector2.zero)
         {
             animator.SetBool("Run", true);
@@ -33,7 +33,7 @@ public class AnimController : MonoBehaviour
             animator.SetBool("Idle", true);
         }
 
-        
+
         if (moveInput.x > 0)
         {
             spriteRenderer.flipX = false;

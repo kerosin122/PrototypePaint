@@ -3,7 +3,7 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     [SerializeField] private State _firstState;
-    [SerializeField] private PlayerMover _target;
+    [SerializeField] private Player _target;
     private State _currentState;
 
     private void Start()

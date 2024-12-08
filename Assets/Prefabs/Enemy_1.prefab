@@ -189,7 +189,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 2.5
 --- !u!114 &3296856202391247698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetBackState: {fileID: 7939069104417485164}
   _targetNextState: {fileID: 3073271251482552706}
-  _distanceToTarget: 3
+  _distanceToTarget: 1.5
 --- !u!114 &3073271251482552706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +351,7 @@ MonoBehaviour:
   _transitionsBack:
   - {fileID: 775748440337863803}
   _transitionsNext: []
+  _delayBetweenAttack: 3
 --- !u!114 &1617558111629659771
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public abstract class State : MonoBehaviour
 {
     protected Animator Animator { get; private set; }
     protected NavMeshAgent Agent { get; private set; }
-    protected PlayerMover Target { get; private set; }
+    protected Player Target { get; private set; }
     [SerializeField] private Transition[] _transitionsBack;
     [SerializeField] private Transition[] _transitionsNext;
 
@@ -18,7 +18,7 @@ public abstract class State : MonoBehaviour
         Agent = GetComponent<NavMeshAgent>();
     }
 
-    public void Enter(PlayerMover target)
+    public void Enter(Player target)
     {
         if (!enabled)
         {

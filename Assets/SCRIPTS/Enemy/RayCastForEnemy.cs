@@ -8,7 +8,7 @@ public static class RayCastForEnemy
         RaycastHit2D hit = Physics2D.Raycast(currentPosition, targetPosition - currentPosition, distance);
         if (hit)
         {
-            if (hit.collider.gameObject.TryGetComponent<PlayerMover>(out PlayerMover player))
+            if (hit.collider.gameObject.TryGetComponent<Player>(out Player player))
             {
                 return true;
             }
