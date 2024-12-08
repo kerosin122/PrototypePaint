@@ -8,13 +8,14 @@ namespace EventBus
         [SerializeField] private EnemyDetecting _enemyDetecting;
         [SerializeField] private EnemySpawner _enemySpawner;
         [SerializeField] private Effects _effects;
-       
+        [SerializeField] private CanvasDialog _canvas;
 
         private void Awake()
         {
-            _paintManager = new(_rockService);
+            _paintManager = new(_rockService, _canvas);
             _enemyDetecting.Inject(_enemySpawner);
             _effects.Inject(_enemyDetecting);
         }
+
     }
 }

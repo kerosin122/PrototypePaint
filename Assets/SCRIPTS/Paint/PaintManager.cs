@@ -4,9 +4,11 @@ namespace EventBus
     public class PaintManager
     {
         private IMagicRockService _magicRockService;
+        private IViewService _view;
 
-        public PaintManager(IMagicRockService MagicRockService)
+        public PaintManager(IMagicRockService MagicRockService, IViewService view)
         {
+            _view = view;
             _magicRockService = MagicRockService;
             EventBus.Instance.Subscribe<RuneIsColoredSignals>(CheckPaintedRocks, 0);
         }
@@ -15,7 +17,7 @@ namespace EventBus
         {
             if (_magicRockService.GetCountRockPainted() >= _magicRockService.GetCountRockAll())
             {
-                Debug.Log("Уровень пройден");
+                DialogManager.ShowDialog<WinPanel>(_view);
             }
         }
     }
