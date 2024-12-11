@@ -12,9 +12,11 @@ public class Run : State
     {
         _startSpeedAgent = Agent.speed;
         Agent.speed *= 1.2f;
+        Animator.SetBool(AnimHash.RunHash,true);
     }
     private void OnDisable()
     {
         Agent.speed = _startSpeedAgent;
+        Animator.SetBool(AnimHash.RunHash,false);
     }
 }
