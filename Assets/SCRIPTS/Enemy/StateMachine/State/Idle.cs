@@ -7,12 +7,12 @@ public class Idle : State
     private void OnEnable()
     {
         Agent.isStopped = true;
-        Animator.SetBool("Idle", true);
+        Animator.SetBool(AnimHash.IdleHash,true);
     }
 
     private void OnDisable()
     {
         Agent.isStopped = false;
-        Animator.SetBool("Idle", false);
+        Animator.SetBool(AnimHash.IdleHash,false);
     }
 }
