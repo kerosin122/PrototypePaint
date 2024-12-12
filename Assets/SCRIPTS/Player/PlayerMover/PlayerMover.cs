@@ -6,7 +6,7 @@ public class PlayerMover : MonoBehaviour
     private PlayerCharacteristics _player;
     private InputKeyBoard _input = new();
     private Rigidbody2D _rigidbody;
-
+    public bool Movement { get; set; } = true;
 
     private void Awake()
     {
@@ -17,14 +17,16 @@ public class PlayerMover : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        if (Movement)
+        {
+            Move();
+        }
     }
 
     private void Move()
     {
         _rigidbody.AddForce(_player.GetSpeed() * Time.deltaTime * (Vector3)_input.GetVector());
     }
-
 
     private void OnEnable()
     {

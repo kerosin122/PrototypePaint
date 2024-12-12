@@ -1,20 +1,43 @@
 using UnityEngine;
-
-public class GameController
+namespace EventBus
 {
-    public void StopGame()
+    public class GameController
     {
+        private PlayerMover _playerMover;
 
-    }
+        public GameController(PlayerMover player)
+        {
+            _playerMover = player;
+        }
+        public void StopGame()
+        {
 
-    public void StartGame()
-    {
+        }
 
-    }
+        public void StartGame()
+        {
 
+        }
 
-    public void RestartGame()
-    {
+        public void RestartGame()
+        {
 
+        }
+
+        private void PlayerMoving(PlayerMovingSignals signal)
+        {
+            Debug.Log("What?");
+            _playerMover.Movement = signal.Moving;
+        }
+
+        public void OnEnable()
+        {
+            EventBus.Instance.Subscribe<PlayerMovingSignals>(PlayerMoving, 0);
+        }
+
+        private void OnDisable()
+        {
+            EventBus.Instance.Unsubscribe<PlayerMovingSignals>(PlayerMoving);
+        }
     }
 }
