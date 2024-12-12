@@ -5,6 +5,7 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private State _firstState;
     [SerializeField] private Player _target;
     private State _currentState;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
@@ -29,6 +30,9 @@ public class StateMachine : MonoBehaviour
         {
             Transit(backState);
         }
+
+      
+
     }
 
     private void Restart(State startState)
