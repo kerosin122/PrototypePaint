@@ -18,14 +18,12 @@ GameObject:
   - component: {fileID: 7645224276356887909}
   - component: {fileID: 1140336379527351046}
   - component: {fileID: 1891512086986556616}
-  - component: {fileID: 2610099224351761936}
-  - component: {fileID: 8239875276670482223}
   - component: {fileID: 2942894088482882424}
   - component: {fileID: 7939069104417485164}
   - component: {fileID: 775748440337863803}
   - component: {fileID: 3073271251482552706}
-  - component: {fileID: 1617558111629659771}
   - component: {fileID: 92197919878946250}
+  - component: {fileID: 7978124784155452365}
   m_Layer: 2
   m_Name: Enemy_1
   m_TagString: Untagged
@@ -114,9 +112,9 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 0
@@ -220,7 +218,7 @@ MonoBehaviour:
   _transitionsNext:
   - {fileID: 1140336379527351046}
   - {fileID: 775748440337863803}
-  - {fileID: 2610099224351761936}
+  - {fileID: 2942894088482882424}
 --- !u!114 &1140336379527351046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,44 +249,12 @@ MonoBehaviour:
   _transitionsBack:
   - {fileID: 1140336379527351046}
   _transitionsNext:
-  - {fileID: 2610099224351761936}
+  - {fileID: 2942894088482882424}
   - {fileID: 775748440337863803}
   _checkPoint:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &2610099224351761936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 753631847705238763}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b91e1cf5e11764a9b1af0709899f3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetBackState: {fileID: 1891512086986556616}
-  _targetNextState: {fileID: 8239875276670482223}
-  _duration: 5
---- !u!114 &8239875276670482223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 753631847705238763}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c468d6724009de441b36d263f3f39d6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transitionsBack:
-  - {fileID: 2610099224351761936}
-  _transitionsNext:
-  - {fileID: 2942894088482882424}
-  - {fileID: 775748440337863803}
 --- !u!114 &2942894088482882424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b37016ede9db944cac8b642186a234e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetBackState: {fileID: 8239875276670482223}
+  _targetBackState: {fileID: 1891512086986556616}
   _targetNextState: {fileID: 7939069104417485164}
   _timerSearch: 5
   _rayDistance: 5
@@ -352,18 +318,6 @@ MonoBehaviour:
   - {fileID: 775748440337863803}
   _transitionsNext: []
   _delayBetweenAttack: 3
---- !u!114 &1617558111629659771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 753631847705238763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6406ed02addd73c43bbbaaa6c98af691, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &92197919878946250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,5 +328,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22814aff0ad128c42826741a465ed5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7978124784155452365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753631847705238763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd016ea5a2b364f41ab87db68637a8fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
