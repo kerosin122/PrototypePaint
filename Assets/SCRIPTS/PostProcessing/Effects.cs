@@ -18,7 +18,9 @@ public class Effects : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float distance = Mathf.InverseLerp(_maxDistance, 0, _enemyDetecting.GetDistanceOfEnemyFromPlayer());
+        Enemy Enemy = _enemyDetecting.GetClosestEnemy();
+        float distanceClosestEnemy = Vector2.Distance(transform.position, Enemy.transform.position);
+        float distance = Mathf.InverseLerp(_maxDistance, 0, distanceClosestEnemy);
         _effectApproachingEnemy.weight = distance;
     }
 

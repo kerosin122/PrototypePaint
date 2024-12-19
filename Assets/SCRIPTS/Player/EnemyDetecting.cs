@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,17 +12,19 @@ public class EnemyDetecting : MonoBehaviour, IEnemyDetectingServices
         _enemyAll = _enemySpawner.GetEnemy();
     }
 
-    public float GetDistanceOfEnemyFromPlayer()
+    public Enemy GetClosestEnemy()
     {
         float minDistance = Vector3.Distance(transform.position, _enemyAll[0].transform.position);
+        Enemy closestEnemy = _enemyAll[0];
         foreach (var enemy in _enemyAll)
         {
             float distanceFromEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if (distanceFromEnemy <= minDistance)
             {
                 minDistance = distanceFromEnemy;
+                closestEnemy = enemy;
             }
         }
-        return minDistance;
+        return closestEnemy;
     }
 }

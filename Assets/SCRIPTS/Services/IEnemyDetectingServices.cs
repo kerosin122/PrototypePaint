@@ -1,5 +1,5 @@
 
 public interface IEnemyDetectingServices
 {
-    public float GetDistanceOfEnemyFromPlayer();
+    public Enemy GetClosestEnemy();
 }
