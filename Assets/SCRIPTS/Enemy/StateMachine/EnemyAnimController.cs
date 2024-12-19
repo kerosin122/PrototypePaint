@@ -24,7 +24,7 @@ public class EnemyAnimController : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
-        else
+        if (agent.pathEndPosition.x < transform.position.x)
         {
             spriteRenderer.flipX = false;
         }

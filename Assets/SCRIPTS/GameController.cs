@@ -26,7 +26,6 @@ namespace EventBus
 
         private void PlayerMoving(PlayerMovingSignals signal)
         {
-            Debug.Log("What?");
             _playerMover.Movement = signal.Moving;
         }
 

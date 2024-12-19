@@ -30,9 +30,6 @@ public class StateMachine : MonoBehaviour
         {
             Transit(backState);
         }
-
-      
-
     }
 
     private void Restart(State startState)

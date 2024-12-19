@@ -5,30 +5,36 @@ public class RunTransition : Transition
     [SerializeField] private float _timerSearch;
     [SerializeField] private float _rayDistance = 5;
 
-    private void SearchPlayer(bool value)
+    private void EnableNextState()
     {
         if (RayCastForEnemy.Ray(transform.position, Target.transform.position, _rayDistance))
         {
             NeedNextTransit = true;
-            NeedBackTransit = false;
         }
-
-        if (value)
-        {
-            NeedNextTransit = false;
-            NeedBackTransit = true;
-        }
+    }
+    private void EnableBackState(bool value)
+    {
+        NeedBackTransit = value;
+    }
+    private void FixedUpdate()
+    {
+        EnableNextState();
     }
 
     private void OnEnable()
     {
-        Timer.TimeIsUp += SearchPlayer;
-        StartCoroutine(Timer.TimerCounting(_timerSearch));
+        if (TargetNextState.enabled && !TargetBackState.enabled)
+        {
+            Timer.TimeIsUp += EnableBackState;
+            StartCoroutine(Timer.TimerCounting(_timerSearch));
+        }
     }
 
     private void OnDisable()
     {
+        NeedNextTransit = false;
+        NeedBackTransit = false;
         StopAllCoroutines();
-        Timer.TimeIsUp -= SearchPlayer;
+        Timer.TimeIsUp -= EnableBackState;
     }
 }

@@ -1,27 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LayerController : MonoBehaviour
 {
-    private Player _player;
-    private SpriteRenderer _playerSpriteRenderer;
-    private SpriteRenderer _thisSpriteRenderer;
-
-
-    private void FixedUpdate()
+    private SpriteRenderer _playerSprite;
+    private void Awake()
     {
-        CheckLayers();
+        _playerSprite = GetComponent<SpriteRenderer>();
     }
-    private void CheckLayers()
+
+    private void OnTriggerStay2D(Collider2D collider)
     {
-        if (_player.transform.position.y >= transform.position.y)
+        if (collider.TryGetComponent<Props>(out Props props))
         {
-            _thisSpriteRenderer.sortingOrder = _playerSpriteRenderer.sortingOrder + 1;
-        }
-        else
-        {
-            _thisSpriteRenderer.sortingOrder = _playerSpriteRenderer.sortingOrder - 1;
+            if (props.TryGetComponent<SpriteRenderer>(out SpriteRenderer sprite))
+            {
+                if (transform.position.y >= collider.transform.position.y)
+                {
+                    sprite.sortingOrder = _playerSprite.sortingOrder + 1;
+                }
+                else
+                {
+                    sprite.sortingOrder = _playerSprite.sortingOrder - 1;
+                }
+            }
         }
     }
 }

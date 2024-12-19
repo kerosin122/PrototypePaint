@@ -15,10 +15,10 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _health -= damage;
-        Debug.Log("Ай, больно!!");
+        // Debug.Log("Ай, больно!!");
         if (_health <= 0)
         {
-            Debug.Log("Помер!");
+            // Debug.Log("Помер!");
         }
     }
 }

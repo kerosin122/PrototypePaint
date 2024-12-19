@@ -19,16 +19,4 @@ public abstract class Transition : MonoBehaviour
         Agent = agent;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    // void Update()
-    // {
-    //     if (Agent.steeringTarget.x > transform.position.x)
-    //     {
-    //         spriteRenderer.flipX = true;
-    //     }
-    //     else if (Agent.steeringTarget.x < transform.position.x)
-    //     {
-    //         spriteRenderer.flipX = false;
-    //     }
-    // }
-
 }

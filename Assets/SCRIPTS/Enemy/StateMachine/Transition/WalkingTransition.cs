@@ -2,44 +2,41 @@ using UnityEngine;
 
 public class WalkingTransition : Transition
 {
-
     [SerializeField] private float _duration;
 
     private void Update()
     {
-        StopWalking();
+        EnableBackState();
     }
 
-    private void StopWalking()
+    private void EnableBackState()
     {
-        if (NeedNextTransit && !Agent.hasPath)
+        if (TargetNextState.enabled && !TargetBackState.enabled && !Agent.hasPath)
         {
-            NeedNextTransit = false;
             NeedBackTransit = true;
         }
     }
 
-    private void NeedTransition(bool value)
+    private void EnableNextState(bool value)
     {
         NeedNextTransit = value;
     }
 
     private void OnEnable()
     {
-        if (!NeedNextTransit)
+        if (TargetBackState.enabled && !TargetNextState.enabled)
         {
-            NeedBackTransit = false;
-            Timer.TimeIsUp += NeedTransition;
+            Timer.TimeIsUp += EnableNextState;
             StartCoroutine(Timer.TimerCounting(_duration));
         }
     }
 
     private void OnDisable()
     {
-        if (NeedNextTransit)
-        {
-            Timer.TimeIsUp -= NeedTransition;
-        }
+        NeedNextTransit = false;
+        NeedBackTransit = false;
+        StopAllCoroutines();
+        Timer.TimeIsUp -= EnableNextState;
     }
 
 }

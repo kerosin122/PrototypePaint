@@ -33,9 +33,9 @@ public abstract class State : MonoBehaviour
     {
         if (enabled)
         {
+            enabled = false;
             EnumerationTransition(_transitionsNext, false);
             EnumerationTransition(_transitionsBack, false);
-            enabled = false;
         }
     }
 

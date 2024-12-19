@@ -2,41 +2,29 @@ using UnityEngine;
 
 public class AttackTransition : Transition
 {
-    [SerializeField] private float _distanceToTarget;
-
-
     private void Update()
     {
-        if (CheckDistance() <= _distanceToTarget)
+        if (CheckDistance() <= Agent.stoppingDistance)
         {
-            Run();
+            EnableNextTransition();
             return;
         }
-        Danger();
+        EnableBackTransition();
     }
     private float CheckDistance()
     {
         return Vector3.Distance(transform.position, Target.transform.position);
     }
 
-    private void Run()
+    private void EnableNextTransition()
     {
-        if (!NeedNextTransit)
-        {
-            NeedNextTransit = true;
-            NeedBackTransit = false;
-        }
+        NeedNextTransit = true;
     }
 
-    private void Danger()
+    private void EnableBackTransition()
     {
-        if (!NeedBackTransit)
-        {
-            NeedBackTransit = true;
-            NeedNextTransit = false;
-        }
+        NeedBackTransit = true;
     }
-
 
     private void OnDisable()
     {

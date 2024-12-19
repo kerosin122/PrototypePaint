@@ -19,6 +19,10 @@ public class GeneratePath
         SetPositionToMove(ChangePosition());
     }
 
+    public void ResetPath()
+    {
+        _agent.ResetPath();
+    }
     private Vector3 ChangePosition()
     {
         Vector3 newPos = _positions[Random.Range(0, _positions.Length)].transform.position;

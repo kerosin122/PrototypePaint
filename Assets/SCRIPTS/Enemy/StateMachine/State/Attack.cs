@@ -17,6 +17,7 @@ public class Attack : State
 
     private void FixedUpdate()
     {
+        Agent.SetDestination(Target.transform.position);
         if (enabled && _attack)
         {
             Animator.SetTrigger("Attacks");
